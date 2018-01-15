@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwua.mall.dao.CategoryBrandMapper">
+
+    <resultMap id="getCBsResultMap" type="categoryBrand">
+        <id property="cid" column="cid"/>
+        <result property="name" column="cname"/>
+        <collection property="brands" ofType="brand">
+            <id property="bid" column="bid"/>
+            <result property="name" column="bname"/>
+        </collection>
+    </resultMap>
+
+    <select id="getCBs" resultMap="getCBsResultMap">
+        SELECT
+            category.cid,
+            category.name cname,
+            brand.bid,
+            brand.name    bname
+        FROM category, brand, (SELECT DISTINCT
+                                   cid,
+                                   bid
+                               FROM product) t
+        WHERE t.cid = category.cid AND t.bid = brand.bid
+    </select>
+
+</mapper>

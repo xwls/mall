@@ -54,12 +54,12 @@
             <ul class="nav navbar-nav">
                 <li><a href="${ctx}/index">首页</a></li>
                 <c:forEach items="${applicationScope.cbs}" var="cb">
-                    <li class="dropdown"><a href="${ctx}/list?cid=${cb.category.cid}&page=1" >${cb.category.name}</a>
+                    <li class="dropdown"><a href="${ctx}/list?cid=${cb.cid}&page=1" >${cb.name}</a>
                         <div class="dropdown-menu">
                             <div class="dropdown-inner">
                                 <ul class="list-unstyled">
-                                    <c:forEach items="${cb.brand}" var="brand" varStatus="status">
-                                        <li><a href="${ctx}/list?cid=${cb.category.cid}&bid=${brand.bid}&page=1">${brand.name}</a></li>
+                                    <c:forEach items="${cb.brands}" var="brand" varStatus="status">
+                                        <li><a href="${ctx}/list?cid=${cb.cid}&bid=${brand.bid}&page=1">${brand.name}</a></li>
                                         <c:if test="${status.count % 4 == 0}">
                                             </ul>
                                             <ul class="list-unstyled">

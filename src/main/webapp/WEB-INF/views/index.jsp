@@ -64,10 +64,10 @@
 				<div class="col-lg-12">
 					<div class="heading"><h2>特价商品</h2></div>
 					<div class="products">
-                        <c:forEach items="${requestScope.products}" var="product">
+                        <c:forEach items="${requestScope.specialProducts}" var="product">
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <div class="product">
-                                    <div class="image"><a href="${ctx}/product?pid=${product.pid}"><img src="${ctx}/${product.img_url}" /></a></div>
+                                    <div class="image"><a href="${ctx}/product?pid=${product.pid}"><img src="${ctx}/${product.imgUrl}" /></a></div>
                                     <div class="buttons">
                                         <a class="btn cart" href="#"><span class="glyphicon glyphicon-shopping-cart" title="加入购物车"></span></a>
                                         <a class="btn wishlist" href="#"><span class="glyphicon glyphicon-credit-card" title="立即购买"></span></a>
@@ -75,7 +75,7 @@
                                     <div class="caption">
                                         <div class="name"><a href="${ctx}/product?pid=${product.pid}" title="${product.name}">${product.name}</a></div>
                                         <div class="name"><a href="${ctx}/product?pid=${product.pid}" title="${product.description}">${product.description}</a></div>
-                                        <div class="price">￥${product.price}<span>￥${product.original_price}</span></div>
+                                        <div class="price">￥${product.price}<span>￥${product.originalPrice}</span></div>
                                     </div>
                                 </div>
                             </div>

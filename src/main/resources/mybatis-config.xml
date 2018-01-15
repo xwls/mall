@@ -5,7 +5,7 @@
 <configuration>
 
     <typeAliases>
-        <package name="com.hwua.ssm.po"/>
+        <package name="com.hwua.mall.po"/>
     </typeAliases>
 
 </configuration>

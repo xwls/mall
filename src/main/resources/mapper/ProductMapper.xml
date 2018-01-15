@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwua.mall.dao.ProductMapper">
+
+    <resultMap id="productMap" type="product">
+        <id property="pid" column="pid"/>
+        <result property="originalPrice" column="original_price"/>
+        <result property="imgUrl" column="img_url"/>
+        <result property="salesVolume" column="sales_volume"/>
+        <result property="name" column="name"/>
+        <result property="description" column="description"/>
+        <result property="price" column="price"/>
+        <result property="inventory" column="inventory"/>
+        <association property="category" javaType="category">
+            <id property="cid" column="cid"/>
+            <result property="name" column="cname"/>
+        </association>
+        <association property="brand" javaType="brand">
+            <id property="bid" column="bid"/>
+            <result property="name" column="bname"/>
+        </association>
+    </resultMap>
+
+    <select id="querySpecials" resultMap="productMap">
+        SELECT
+        @rowno := @rowno + 1 AS rowno,
+        r.*
+        FROM (SELECT
+        original_price - price sub_price,
+        pid,
+        category.cid,
+        category.name          cname,
+        brand.bid,
+        brand.name             bname,
+        product.name,
+        description,
+        original_price,
+        price,
+        img_url,
+        inventory,
+        sales_volume
+        FROM product
+        JOIN category ON product.cid = category.cid
+        JOIN brand ON product.bid = brand.bid
+        ORDER BY 1 DESC) r, (SELECT @rowno := 0) t
+        WHERE @rowno &lt; 4
+    </select>
+
+    <select id="query" parameterType="map" resultMap="productMap">
+        SELECT
+            pid,
+            category.cid,
+            category.name          cname,
+            brand.bid,
+            brand.name             bname,
+            product.name,
+            description,
+            original_price,
+            price,
+            img_url,
+            inventory,
+            sales_volume
+        FROM product
+            JOIN category ON product.cid = category.cid
+            JOIN brand ON product.bid = brand.bid
+        WHERE 1 = 1
+        <if test="cid != null">
+            AND product.cid = #{cid}
+        </if>
+        <if test="bid != null">
+            AND product.bid = #{bid}
+        </if>
+        <if test="keyWord != null">
+            AND (product.name LIKE CONCAT('%',#{keyWord},'%')
+            OR product.description LIKE CONCAT('%',#{keyWord},'%'))
+        </if>
+        ORDER BY sales_volume
+        <if test="start != null &amp;&amp; pageSize != null">
+            LIMIT #{start},#{pageSize}
+        </if>
+    </select>
+
+</mapper>
