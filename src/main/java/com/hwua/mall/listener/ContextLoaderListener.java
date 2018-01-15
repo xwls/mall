@@ -3,6 +3,7 @@ package com.hwua.mall.listener;
 import com.alibaba.fastjson.JSON;
 import com.hwua.mall.po.CategoryBrand;
 import com.hwua.mall.service.CBService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -14,12 +15,19 @@ import java.util.Set;
 
 @WebListener
 public class ContextLoaderListener implements ServletContextListener{
+
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
+        //1.获取ServletContext
         ServletContext servletContext = servletContextEvent.getServletContext();
-        WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(servletContext);
+        //2.获取Spring的ApplicationContext
+        WebApplicationContext ctx = WebApplicationContextUtils.
+                getWebApplicationContext(servletContext);
+        //3.从IOC容器中获取需要使用的Service
         CBService cbService = ctx.getBean(CBService.class);
+        //4.调用Service中的方法查询需要的数据
         Set<CategoryBrand> cbs = cbService.getCBs();
+        //5.将查询到的数据放入application作用域
         servletContext.setAttribute("cbs",cbs);
         System.out.println("JSON.toJSONString(cbs) = " + JSON.toJSONString(cbs));
     }
