@@ -82,4 +82,20 @@
         </if>
     </select>
 
+    <select id="getCount" parameterType="map" resultType="int">
+        SELECT COUNT(pid)
+        FROM product
+        WHERE 1 = 1
+        <if test="cid != null">
+            AND product.cid = #{cid}
+        </if>
+        <if test="bid != null">
+            AND product.bid = #{bid}
+        </if>
+        <if test="keyWord != null">
+            AND (product.name LIKE CONCAT('%',#{keyWord},'%')
+            OR product.description LIKE CONCAT('%',#{keyWord},'%'))
+        </if>
+    </select>
+
 </mapper>

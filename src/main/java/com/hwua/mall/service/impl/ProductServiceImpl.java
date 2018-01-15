@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -17,53 +18,33 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductMapper productMapper;
 
+    private static final int PAGE_SIZE = 4;
+
     @Override
     public Set<Product> specials() {
         return productMapper.querySpecials();
     }
 
     @Override
-    public Set<Product> getByCid(Integer cid, Integer page, Integer pageSize) {
-        Map<String,Object> param = new HashMap<>();
-        param.put("cid",cid);
-        if (page != null && pageSize != null){
-            param.put("start",(page - 1) * pageSize);
-            param.put("pageSize",pageSize);
+    public Map<String,Object> query(Map<String, Object> param,Integer page) {
+        param.put("start",(page - 1) * PAGE_SIZE);
+        param.put("pageSize",PAGE_SIZE);
+        Set<Product> products = productMapper.query(param);
+        Integer count = productMapper.getCount(param);
+        param.put("products",products);
+        param.put("count",count);
+        param.put("pageNum",Math.ceil((double) count/PAGE_SIZE));
+        if (param.get("cid") != null){
+            Iterator<Product> iterator = products.iterator();
+            Product product = iterator.next();
+            param.put("cname",product.getCategory().getName());
         }
-        return productMapper.query(param);
+        if (param.get("bid") != null){
+            Iterator<Product> iterator = products.iterator();
+            Product product = iterator.next();
+            param.put("bname",product.getBrand().getName());
+        }
+        return param;
     }
 
-    @Override
-    public Set<Product> getByBid(Integer bid, Integer page, Integer pageSize) {
-        Map<String,Object> param = new HashMap<>();
-        param.put("bid",bid);
-        if (page != null && pageSize != null){
-            param.put("start",(page - 1) * pageSize);
-            param.put("pageSize",pageSize);
-        }
-        return productMapper.query(param);
-    }
-
-    @Override
-    public Set<Product> getByCidAndBid(Integer cid, Integer bid, Integer page, Integer pageSize) {
-        Map<String,Object> param = new HashMap<>();
-        param.put("cid",cid);
-        param.put("bid",bid);
-        if (page != null && pageSize != null){
-            param.put("start",(page - 1) * pageSize);
-            param.put("pageSize",pageSize);
-        }
-        return productMapper.query(param);
-    }
-
-    @Override
-    public Set<Product> search(String keyWord, Integer page, Integer pageSize) {
-        Map<String,Object> param = new HashMap<>();
-        param.put("keyWord",keyWord);
-        if (page != null && pageSize != null){
-            param.put("start",(page - 1) * pageSize);
-            param.put("pageSize",pageSize);
-        }
-        return productMapper.query(param);
-    }
 }

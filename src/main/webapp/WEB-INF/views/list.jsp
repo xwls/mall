@@ -19,11 +19,11 @@
 				<div class="col-lg-12">
 					<ul class="breadcrumb">
 						<li><a href="${ctx}/index">首页</a></li>
-                        <c:if test="${requestScope.category != null}">
-                            <li><a href="${ctx}/list?cid=${requestScope.category.cid}&page=1">${requestScope.category.name}</a></li>
+                        <c:if test="${requestScope.result.cid != null}">
+                            <li><a href="${ctx}/list?cid=${requestScope.result.cid}&page=1">${requestScope.result.cname}</a></li>
                         </c:if>
-                        <c:if test="${requestScope.brand != null}">
-                            <li><a href="${ctx}/list?bid=${requestScope.brand.bid}&page=1">${requestScope.brand.name}</a></li>
+                        <c:if test="${requestScope.result.bid != null}">
+                            <li><a href="${ctx}/list?bid=${requestScope.result.bid}&page=1">${requestScope.result.bname}</a></li>
                         </c:if>
 					</ul>
 				</div>
@@ -36,7 +36,7 @@
 								<c:forEach items="${requestScope.result.products}" var="product">
                                     <div class="col-lg-3 col-md-3 col-xs-12">
                                         <div class="product">
-                                            <div class="image"><a href="${ctx}/product?pid=${product.pid}"><img src="${ctx}/${product.img_url}" /></a></div>
+                                            <div class="image"><a href="${ctx}/product?pid=${product.pid}"><img src="${ctx}/${product.imgUrl}" /></a></div>
                                             <div class="buttons">
                                                 <a class="btn cart" href="#"><span class="glyphicon glyphicon-shopping-cart" title="加入购物车"></span></a>
                                                 <a class="btn wishlist" href="#"><span class="glyphicon glyphicon-credit-card" title="立即购买"></span></a>
@@ -44,7 +44,7 @@
                                             <div class="caption">
                                                 <div class="name"><a href="${ctx}/product?pid=${product.pid}" title="${product.name}">${product.name}</a></div>
                                                 <div class="name"><a href="${ctx}/product?pid=${product.pid}" title="${product.description}">${product.description}</a></div>
-                                                <div class="price">￥${product.price}<c:if test="${product.original_price != product.price}"><span>￥${product.original_price}</span></c:if></div>
+                                                <div class="price">￥${product.price}<c:if test="${product.originalPrice != product.price}"><span>￥${product.originalPrice}</span></c:if></div>
                                             </div>
                                         </div>
                                     </div>
@@ -56,7 +56,7 @@
 						<ul class="pagination">
                             <c:forEach begin="1" end="${requestScope.result.pageNum}" var="page">
                                 <li <c:if test="${param.page == page}">class="active"</c:if>>
-                                    <a href="${ctx}/list?<c:if test="${requestScope.category != null}">cid=${requestScope.category.cid}</c:if><c:if test="${requestScope.brand != null}">&bid=${requestScope.brand.bid}</c:if><c:if test="${param.name != null}">name=${param.name}</c:if>&page=${page}#breadcrumb">${page}</a>
+                                    <a href="${ctx}/list?<c:if test="${requestScope.result.cid != null}">cid=${requestScope.result.cid}</c:if><c:if test="${requestScope.result.bid != null}">&bid=${requestScope.result.bid}</c:if><c:if test="${param.keyWord != null}">name=${param.keyWord}</c:if>&page=${page}#breadcrumb">${page}</a>
                                 </li>
                             </c:forEach>
 						</ul>

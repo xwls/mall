@@ -19,6 +19,8 @@ public interface ProductMapper {
      */
     public Set<Product> query(Map<String,Object> param);
 
+    public Integer getCount(Map<String,Object> param);
+
     /**
      * 根据商品的id查询商品详细信息
      * @param pid 商品id

@@ -15,7 +15,7 @@ public class TestService {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
         ProductService productService = ctx.getBean(ProductService.class);
 //        Set<Product> products = productService.getByBid(4, null, null);
-        Set<Product> products = productService.getByCid(2, 1, 4);
-        System.out.println("JSON.toJSONString(products) = " + JSON.toJSONString(products));
+//        Set<Product> products = productService.getByCid(2, 1, 4);
+//        System.out.println("JSON.toJSONString(products) = " + JSON.toJSONString(products));
     }
 }

@@ -34,7 +34,7 @@
         </div>
         <div class="col-md-4">
             <form class="form-search" action="list" method="get">
-                <input type="text" name="name" value="${requestScope.keyWord}" class="input-medium search-query" required/>
+                <input type="text" name="keyWord" value="${requestScope.result.keyWord}" class="input-medium search-query" required/>
                 <input type="hidden" name="page" value="1"/>
                 <button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>
             </form>
@@ -70,7 +70,7 @@
                         </div>
                     </li>
                 </c:forEach>
-                <li><a href="${ctx}/products.jsp">全部商品</a></li>
+                <li><a href="${ctx}/list?page=1">全部商品</a></li>
             </ul>
         </div>
     </div>
