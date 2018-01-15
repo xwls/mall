@@ -47,4 +47,9 @@ public class ProductServiceImpl implements ProductService {
         return param;
     }
 
+    @Override
+    public Product get(Integer pid) {
+        return productMapper.queryByPid(pid);
+    }
+
 }

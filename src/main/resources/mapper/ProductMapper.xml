@@ -98,4 +98,24 @@
         </if>
     </select>
 
+    <select id="queryByPid" parameterType="int" resultMap="productMap">
+        SELECT
+            pid,
+            category.cid,
+            category.name          cname,
+            brand.bid,
+            brand.name             bname,
+            product.name,
+            description,
+            original_price,
+            price,
+            img_url,
+            inventory,
+            sales_volume
+        FROM product
+            JOIN category ON product.cid = category.cid
+            JOIN brand ON product.bid = brand.bid
+        WHERE pid = #{pid}
+    </select>
+
 </mapper>

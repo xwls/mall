@@ -29,5 +29,9 @@
             <bean class="com.hwua.mall.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>-->
-
+    <mvc:view-controller path="index" view-name="index"/>
+    <mvc:view-controller path="category" view-name="category"/>
+    <mvc:view-controller path="brand" view-name="brand"/>
+    <mvc:view-controller path="product" view-name="product"/>
+    <mvc:view-controller path="member" view-name="member"/>
 </beans>

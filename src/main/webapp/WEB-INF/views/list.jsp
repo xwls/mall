@@ -56,7 +56,7 @@
 						<ul class="pagination">
                             <c:forEach begin="1" end="${requestScope.result.pageNum}" var="page">
                                 <li <c:if test="${param.page == page}">class="active"</c:if>>
-                                    <a href="${ctx}/list?<c:if test="${requestScope.result.cid != null}">cid=${requestScope.result.cid}</c:if><c:if test="${requestScope.result.bid != null}">&bid=${requestScope.result.bid}</c:if><c:if test="${param.keyWord != null}">name=${param.keyWord}</c:if>&page=${page}#breadcrumb">${page}</a>
+                                    <a href="${ctx}/list?<c:if test="${requestScope.result.cid != null}">cid=${requestScope.result.cid}</c:if><c:if test="${requestScope.result.bid != null}">&bid=${requestScope.result.bid}</c:if><c:if test="${param.keyWord != null}">keyWord=${param.keyWord}</c:if>&page=${page}#breadcrumb">${page}</a>
                                 </li>
                             </c:forEach>
 						</ul>
