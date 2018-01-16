@@ -7,6 +7,8 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>admin</module>
+    <module>common</module>
+    <module>front</module>
   </modules>
   <name>mall Maven Webapp</name>
   <url>http://maven.apache.org</url>

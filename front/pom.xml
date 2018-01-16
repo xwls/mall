@@ -6,11 +6,12 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>admin</artifactId>
+    <artifactId>front</artifactId>
     <packaging>war</packaging>
-    <name>admin Maven Webapp</name>
+    <name>front Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <dependencies>
+        <!--添加Common依赖-->
         <dependency>
             <groupId>com.hwua</groupId>
             <artifactId>common</artifactId>
@@ -18,6 +19,6 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>admin</finalName>
+        <finalName>front</finalName>
     </build>
 </project>
