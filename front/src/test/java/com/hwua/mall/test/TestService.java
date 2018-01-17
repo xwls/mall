@@ -1,6 +1,6 @@
 package com.hwua.mall.test;
 
-import com.hwua.front.service.ProductService;
+import com.hwua.mall.common.service.ProductService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

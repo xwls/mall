@@ -1,8 +1,8 @@
 package com.hwua.mall.test;
 
 import com.alibaba.fastjson.JSON;
-import com.hwua.common.dao.ProductMapper;
-import com.hwua.common.po.Product;
+import com.hwua.mall.common.dao.ProductMapper;
+import com.hwua.mall.common.po.Product;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

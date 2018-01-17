@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwua.mall.common.dao.CategoryMapper">
+
+    <select id="query" parameterType="map" resultType="map">
+        SELECT
+        category.cid,
+        name,
+        ifnull(concat(format(count / (SELECT count(pid)
+        FROM product) * 100, 0), '%'), '0%') percent,
+        ifnull(count, 0) count,
+        category.create_time,
+        category.status
+        FROM category
+        LEFT JOIN (SELECT
+        cid,
+        count(cid) count
+        FROM product
+        GROUP BY cid) t
+        ON (category.cid = t.cid)
+        <if test="name != null">
+            AND name LIKE CONCAT('%',#{name},'%')
+        </if>
+        <if test="start != null &amp;&amp; pageSize != null">
+            LIMIT #{start},#{pageSize}
+        </if>
+    </select>
+
+    <select id="getCount" parameterType="map" resultType="int">
+        SELECT count(category.cid) count
+        FROM category
+        LEFT JOIN (SELECT
+        cid,
+        count(cid) count
+        FROM category
+        GROUP BY cid) t
+        ON (t.cid = category.cid)
+        <if test="name != null">
+            AND name LIKE CONCAT('%',#{name},'%')
+        </if>
+    </select>
+
+</mapper>

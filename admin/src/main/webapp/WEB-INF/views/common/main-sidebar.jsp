@@ -41,7 +41,8 @@
                 </a>
                 <ul class="treeview-menu">
                     <li <c:if test='${requestScope.title == "仪表盘"}'> class="active"</c:if> ><a href="index"><i class="fa fa-circle-o"></i>体表盘</a></li>
-                    <li <c:if test='${requestScope.title == "分类&品牌"}'> class="active"</c:if> ><a href="category-brand"><i class="fa fa-circle-o"></i>分类&品牌</a></li>
+                    <li <c:if test='${requestScope.title == "分类"}'> class="active"</c:if> ><a href="category"><i class="fa fa-circle-o"></i>分类</a></li>
+                    <li <c:if test='${requestScope.title == "品牌"}'> class="active"</c:if> ><a href="brand"><i class="fa fa-circle-o"></i>品牌</a></li>
                     <li <c:if test='${requestScope.title == "商品"}'> class="active"</c:if> ><a href="product"><i class="fa fa-circle-o"></i>商品管理</a></li>
                     <li <c:if test='${requestScope.title == "会员"}'> class="active"</c:if> ><a href="member"><i class="fa fa-circle-o"></i>会员管理</a></li>
                 </ul>

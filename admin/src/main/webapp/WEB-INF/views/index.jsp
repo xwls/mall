@@ -64,7 +64,7 @@
             <div class="inner">
               <h3>44</h3>
 
-              <p>用户注册</p>
+              <p>新用户</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
@@ -79,10 +79,10 @@
             <div class="inner">
               <h3>65</h3>
 
-              <p>访问次数</p>
+              <p>交易额</p>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="ion ion-social-yen"></i>
             </div>
             <a href="#" class="small-box-footer">更多信息 <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -94,14 +94,11 @@
       <div class="row">
         <!-- Left col -->
         <section class="col-lg-7 connectedSortable">
-          <div style="width: 100px;height: 100px;background-color: #0d6aad"></div>
 
         </section>
         <!-- /.Left col -->
         <!-- right col (We are only adding the ID to make the widgets sortable)-->
         <section class="col-lg-5 connectedSortable">
-
-          <div style="width: 100px;height: 100px;background-color: #00ca6d"></div>
 
         </section>
         <!-- right col -->
