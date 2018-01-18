@@ -6,4 +6,5 @@ import java.util.Set;
 
 public interface BannerMapper {
     public Set<Banner> queryLast(Integer count);
+
 }

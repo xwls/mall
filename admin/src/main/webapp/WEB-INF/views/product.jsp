@@ -4,6 +4,11 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html>
 <%@include file="common/head.jsp"%>
+<style type="text/css">
+    .table tbody tr td{
+        vertical-align: middle;
+    }
+</style>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
@@ -16,12 +21,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>Control panel</small>
+        商品管理
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+        <li class="active">商品管理</li>
       </ol>
     </section>
 
@@ -29,84 +33,75 @@
     <section class="content">
       <!-- Small boxes (Stat box) -->
       <div class="row">
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3>150</h3>
+          <div class="col-xs-12">
+              <div class="box">
+                  <div class="box-header">
+                      <h3 class="box-title">商品列表</h3>
+                      <div class="box-tools">
+                          <div class="input-group input-group-sm" style="width: 200px;">
+                              <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
 
-              <p>New Orders</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-bag"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                              <div class="input-group-btn">
+                                  <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                  <button onclick="add()" class="btn btn-default" style="margin-left: 2px"><i
+                                          class="fa fa-plus"></i></button>
+                                  <button class="btn btn-default" style="margin-left: 2px"><i
+                                          class="fa fa-refresh"></i></button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- /.box-header -->
+                  <div class="box-body no-padding">
+                      <table class="table table-bordered table-hover text-center">
+                          <tr>
+                              <th>#</th>
+                              <th>图片</th>
+                              <th style="text-align: left">商品名</th>
+                              <th>分类</th>
+                              <th>品牌</th>
+                              <th>售价</th>
+                              <th>库存</th>
+                              <th>销量</th>
+                              <th>操作</th>
+                          </tr>
+                          <c:forEach items="${requestScope.products}" var="product">
+                              <tr>
+                                  <td>${product.pid}</td>
+                                  <td>
+                                      <div class="pull-left image">
+                                          <img style="width: 60px;height: 60px;padding: 5px" src="/front/${product.imgUrl}" class="img-thumbnail" alt="Product Image">
+                                      </div>
+                                  </td>
+                                  <td style="text-align: left">${product.name}</td>
+                                  <td>${product.category.name}(${product.category.cid})</td>
+                                  <td>${product.brand.name}(${product.brand.bid})</td>
+                                  <td>${product.price}</td>
+                                  <td>${product.inventory}</td>
+                                  <td>${product.salesVolume}</td>
+                                  <td>
+                                      <a class="fa fa-edit" href="#" title="编辑" onclick="edit('${product.pid}')">&nbsp;编辑</a>
+                                  </td>
+                              </tr>
+                          </c:forEach>
+                      </table>
+                  </div>
+                  <!-- /.box-body -->
+                  <div class="box-footer clearfix">
+                      <ul class="pagination pagination-sm no-margin pull-right">
+                          <c:forEach begin="1" end="${requestScope.pageNum}" varStatus="status">
+                              <li <c:if test="${requestScope.page == status.index}">class="active"</c:if> >
+                                  <a href="${path}/product/list?page=${status.index}">${status.index}</a>
+                              </li>
+                          </c:forEach>
+                      </ul>
+                  </div>
+              </div>
+              <!-- /.box -->
           </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-              <p>Bounce Rate</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-stats-bars"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <h3>44</h3>
-
-              <p>User Registrations</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h3>65</h3>
-
-              <p>Unique Visitors</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-pie-graph"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
       </div>
       <!-- /.row -->
       <!-- Main row -->
-      <div class="row">
-        <!-- Left col -->
-        <section class="col-lg-7 connectedSortable">
-
-
-        </section>
-        <!-- /.Left col -->
-        <!-- right col (We are only adding the ID to make the widgets sortable)-->
-        <section class="col-lg-5 connectedSortable">
-
-
-
-        </section>
-        <!-- right col -->
-      </div>
       <!-- /.row (main row) -->
 
     </section>
@@ -140,5 +135,6 @@
 </div>
 <!-- ./wrapper -->
 <%@include file="common/script.jsp"%>
+<script type="text/javascript" src="${path}/static/dist/js/pages/product.js"></script>
 </body>
 </html>

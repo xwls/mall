@@ -20,7 +20,7 @@
                 <div class="col-md-6">
                     <div class="col-md-4">
                         <div class="image">
-                            <img src="${ctx}/${requestScope.product.img_url}">
+                            <img src="${path}/${requestScope.product.img_url}">
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -29,8 +29,8 @@
                     </div>
                 </div>
                 <div class="col-md-6 btn-cart">
-                    <a href="${ctx}/user/cart" class="btn btn-2">去购物车结算</a>
-                    <a href="${ctx}/product?pid=${requestScope.product.pid}" class="btn btn-2">返回查看商品</a>
+                    <a href="${path}/user/cart" class="btn btn-2">去购物车结算</a>
+                    <a href="${path}/product?pid=${requestScope.product.pid}" class="btn btn-2">返回查看商品</a>
                 </div>
             </div>
 		</div>

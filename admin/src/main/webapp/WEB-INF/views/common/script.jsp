@@ -7,15 +7,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!-- jQuery 3 -->
-<script src="${ctx}/static/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="${path}/static/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="${ctx}/static/bower_components/jquery-ui/jquery-ui.min.js"></script>
+<script src="${path}/static/bower_components/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     $.widget.bridge('uibutton', $.ui.button);
 </script>
 <!-- Bootstrap 3.3.7 -->
-<script src="${ctx}/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="${path}/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- Morris.js charts -->
 <%--<script src="${ctx}/static/bower_components/raphael/raphael.min.js"></script>--%>
 <%--<script src="${ctx}/static/bower_components/morris.js/morris.min.js"></script>--%>
@@ -38,8 +38,9 @@
 <!-- FastClick -->
 <%--<script src="${ctx}/static/bower_components/fastclick/lib/fastclick.js"></script>--%>
 <!-- AdminLTE App -->
-<script src="${ctx}/static/dist/js/adminlte.min.js"></script>
+<script src="${path}/static/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <%--<script src="${ctx}/static/dist/js/pages/dashboard.js"></script>--%>
 <!-- AdminLTE for demo purposes -->
-<script src="${ctx}/static/dist/js/demo.js"></script>
+<script src="${path}/static/dist/js/demo.js"></script>
+<script src="${path}/static/plugins/layer/layer.js"></script>

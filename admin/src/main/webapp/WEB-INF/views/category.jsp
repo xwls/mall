@@ -65,7 +65,7 @@
                                         <td>${category.name}</td>
                                         <td><span class="badge">${category.count}</span></td>
                                         <td width="120px">
-                                            <div class="progress progress-xs" data-toggle="tooltip" data-original-title="${category.percent}">
+                                            <div class="progress progress-sm" data-toggle="tooltip" data-original-title="${category.percent}">
                                                 <div class="progress-bar progress-bar-danger" style="width: ${category.percent}">
                                                 </div>
                                             </div>
@@ -80,7 +80,7 @@
                                             </c:if>
                                         </td>
                                         <td>
-                                            <a class="fa fa-edit" href="javascript:void(0)" title="编辑" onclick="edit('${category.cid}','${category.name}','${category.status}')">&nbsp;编辑</a>
+                                            <a class="fa fa-edit" href="#category-form" title="编辑" onclick="edit('${category.cid}','${category.name}','${category.status}')">&nbsp;编辑</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -92,7 +92,7 @@
                             <ul class="pagination pagination-sm no-margin pull-right">
                                 <c:forEach begin="1" end="${requestScope.pageNum}" varStatus="status">
                                     <li <c:if test="${requestScope.page == status.index}">class="active"</c:if>>
-                                        <a href="${ctx}/category?page=${status.index}">${status.index}</a>
+                                        <a href="${path}/category/list?page=${status.index}">${status.index}</a>
                                     </li>
                                 </c:forEach>
                             </ul>
@@ -101,12 +101,13 @@
                 </div>
 
                 <div class="col-md-4">
+                    <a name="category-form"></a>
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <h3 class="box-title">分类 - 编辑或添加</h3>
                             <p class="help-block text-sm">点击表格单元行中的“编辑”进行编辑，点击表格左上方“加号”进行添加</p>
                         </div>
-                        <form role="form" id="category-form" method="post">
+                        <form role="form" id="category-form" action="${path}/category/saveOrUpdate" method="post">
                             <div class="box-body">
                                 <div class="form-group">
                                     <input type="hidden" name="cid"/>
@@ -123,7 +124,7 @@
                                 </div>
                             </div>
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">提交</button>
+                                <button type="button" onclick="saveOrUpdate()" class="btn btn-primary">提交</button>
                             </div>
                         </form>
                     </div>
@@ -168,6 +169,6 @@
 </div>
 <!-- ./wrapper -->
 <%@include file="common/script.jsp" %>
-<script type="text/javascript"src="${ctx}/static/dist/js/pages/category.js"></script>
+<script type="text/javascript" src="${path}/static/dist/js/pages/category.js"></script>
 </body>
 </html>

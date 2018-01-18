@@ -28,7 +28,7 @@
 						<div class="carousel-inner">
                             <c:forEach items="${requestScope.banners}" var="banner" varStatus="status">
                                 <div class="item <c:if test="${status.index == 0}"> active</c:if>">
-									<a href="${ctx}/${banner.href}"><img src="${ctx}/${banner.img}" alt="First slide"></a>
+									<a href="${path}/${banner.href}"><img src="${path}/${banner.img}" alt="First slide"></a>
                                     <!-- Static Header -->
                                     <div class="header-text hidden-xs">
                                         <div class="col-md-12 text-center">
@@ -50,13 +50,13 @@
 			<div class="row">
 				<div class="banner">
 					<div class="col-sm-4">
-						<img src="${ctx}/static/images/sub-banner1.png" />
+						<img src="${path}/static/images/sub-banner1.png" />
 					</div>
 					<div class="col-sm-4">
-						<img src="${ctx}/static/images/sub-banner2.png" />
+						<img src="${path}/static/images/sub-banner2.png" />
 					</div>
 					<div class="col-sm-4">
-						<img src="${ctx}/static/images/sub-banner3.png" />
+						<img src="${path}/static/images/sub-banner3.png" />
 					</div>
 				</div>
 			</div>
@@ -67,14 +67,14 @@
                         <c:forEach items="${requestScope.specialProducts}" var="product">
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <div class="product">
-                                    <div class="image"><a href="${ctx}/product?pid=${product.pid}"><img src="${ctx}/${product.imgUrl}" /></a></div>
+                                    <div class="image"><a href="${path}/product?pid=${product.pid}"><img src="${path}/${product.imgUrl}" /></a></div>
                                     <div class="buttons">
                                         <a class="btn cart" href="#"><span class="glyphicon glyphicon-shopping-cart" title="加入购物车"></span></a>
                                         <a class="btn wishlist" href="#"><span class="glyphicon glyphicon-credit-card" title="立即购买"></span></a>
                                     </div>
                                     <div class="caption">
-                                        <div class="name"><a href="${ctx}/product?pid=${product.pid}" title="${product.name}">${product.name}</a></div>
-                                        <div class="name"><a href="${ctx}/product?pid=${product.pid}" title="${product.description}">${product.description}</a></div>
+                                        <div class="name"><a href="${path}/product?pid=${product.pid}" title="${product.name}">${product.name}</a></div>
+                                        <div class="name"><a href="${path}/product?pid=${product.pid}" title="${product.description}">${product.description}</a></div>
                                         <div class="price">￥${product.price}<span>￥${product.originalPrice}</span></div>
                                     </div>
                                 </div>
@@ -86,10 +86,10 @@
 			<div class="row">
 				<div class="banner">
 					<div class="col-sm-6">
-						<img src="${ctx}/static/images/sub-banner4.jpg" />
+						<img src="${path}/static/images/sub-banner4.jpg" />
 					</div>
 					<div class="col-sm-6">
-						<img src="${ctx}/static/images/sub-banner5.png" />
+						<img src="${path}/static/images/sub-banner5.png" />
 					</div>
 				</div>
 			</div>
@@ -99,7 +99,7 @@
 					<div class="products">
 						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 							<div class="product">
-								<div class="image"><a href="product.jsp"><img src="${ctx}/static/images/iphone.png" /></a></div>
+								<div class="image"><a href="product.jsp"><img src="${path}/static/images/iphone.png" /></a></div>
 								<div class="buttons">
 									<a class="btn cart" href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a>
 									<a class="btn wishlist" href="#"><span class="glyphicon glyphicon-heart"></span></a>
@@ -114,7 +114,7 @@
 						</div>
 						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 							<div class="product">
-								<div class="image"><a href="product.jsp"><img src="${ctx}/static/images/galaxy-s4.jpg" /></a></div>
+								<div class="image"><a href="product.jsp"><img src="${path}/static/images/galaxy-s4.jpg" /></a></div>
 								<div class="buttons">
 									<a class="btn cart" href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a>
 									<a class="btn wishlist" href="#"><span class="glyphicon glyphicon-heart"></span></a>
@@ -129,7 +129,7 @@
 						</div>
 						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 							<div class="product">
-								<div class="image"><a href="product.jsp"><img src="${ctx}/static/images/galaxy-note.jpg" /></a></div>
+								<div class="image"><a href="product.jsp"><img src="${path}/static/images/galaxy-note.jpg" /></a></div>
 								<div class="buttons">
 									<a class="btn cart" href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a>
 									<a class="btn wishlist" href="#"><span class="glyphicon glyphicon-heart"></span></a>
@@ -144,7 +144,7 @@
 						</div>
 						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 							<div class="product">
-								<div class="image"><a href="product.jsp"><img src="${ctx}/static/images/z1.png" /></a></div>
+								<div class="image"><a href="product.jsp"><img src="${path}/static/images/z1.png" /></a></div>
 								<div class="buttons">
 									<a class="btn cart" href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a>
 									<a class="btn wishlist" href="#"><span class="glyphicon glyphicon-heart"></span></a>

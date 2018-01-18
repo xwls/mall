@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <%@ include file="common/head.jsp"%>
-    <script src="${ctx}/static/layer/layer.js" type="text/javascript"></script>
+    <script src="${path}/static/layer/layer.js" type="text/javascript"></script>
 	<script type="text/javascript">
         $(function () {
            $(".cart-del").click(function () {
@@ -14,7 +14,7 @@
                    {btn:["确定","取消"]},
                     function () {
                         $.ajax({
-                            url:"${ctx}/user/del_cart?pid="+pid,
+                            url:"${path}/user/del_cart?pid="+pid,
                             type:"GET",
                             success:function (result) {
                                 if(result.result == "success"){
@@ -41,8 +41,8 @@
 				<div class="col-lg-12">
                     <a name="cart"></a>
 					<ul class="breadcrumb">
-						<li><a href="${ctx}/index">首页</a></li>
-						<li><a href="${ctx}/user/cart">购物车</a></li>
+						<li><a href="${path}/index">首页</a></li>
+						<li><a href="${path}/user/cart">购物车</a></li>
 					</ul>
 				</div>
 			</div>
@@ -51,12 +51,12 @@
                     <div class="product well">
                         <div class="col-md-2">
                             <div class="image">
-                                <img src="${ctx}/${cart.img_url}" />
+                                <img src="${path}/${cart.img_url}" />
                             </div>
                         </div>
                         <div class="col-md-10">
                             <div class="caption">
-                                <div class="name"><h3><a href="${ctx}/product?pid=${cart.pid}">${cart.name}</a></h3></div>
+                                <div class="name"><h3><a href="${path}/product?pid=${cart.pid}">${cart.name}</a></h3></div>
                                 <%--<div class="info">
                                     <ul>
                                         <li>Brand: text</li>

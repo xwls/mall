@@ -33,7 +33,7 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="heading"><h2>登录</h2></div>
-					<form name="form1" id="form-login" method="post" action="${ctx}/login">
+					<form name="form1" id="form-login" method="post" action="${path}/login">
 						<c:if test='${param.callback != null}'>
                             <input type="hidden" name="callback" value="${param.callback}<c:if test='${param.quantity != null}'>&quantity=${param.quantity}</c:if>">
                         </c:if>

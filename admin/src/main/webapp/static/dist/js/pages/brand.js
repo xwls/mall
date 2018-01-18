@@ -1,13 +1,13 @@
-function edit(cid, name, status) {
-    $("input[name='cid']").val(cid);
+function edit(bid, name, status) {
+    $("input[name='bid']").val(bid);
     $("input[name='name']").val(name);
     // $("select[name='status']").find("option[value="+status+"]").attr("selected",true);
     $("select[name='status']").val(status);
     return false;
 }
 function add() {
-    $("input[name='cid']").val("");
-    $("#category-form")[0].reset();
+    $("input[name='bid']").val("");
+    $("#brand-form")[0].reset();
 }
 function saveOrUpdate() {
     var nameInput = $("input[name='name']");
@@ -24,11 +24,11 @@ function saveOrUpdate() {
     if(!statusSelect.val()){
         statusSelect.parent("div").addClass("has-error");
     }
-    var form = $("#category-form");
+    var form = $("#brand-form");
     if(!form[0].checkValidity()){
         return;
     }
-    var cid = $("input[name='cid']").val();
+    var cid = $("input[name='bid']").val();
     if(cid){
         layer.confirm("编辑\""+nameInput.val()+"\"?",submitForm);
     }else{
@@ -36,15 +36,15 @@ function saveOrUpdate() {
     }
 }
 function submitForm() {
-    var formData = $("#category-form").serialize();
+    var formData = $("#brand-form").serialize();
     $.ajax({
-        url:path+"/category/saveOrUpdate",
+        url:path+"/brand/saveOrUpdate",
         method:"post",
         data:formData,
         success:function (res) {
             console.log(res);
             if(res.success){
-                location.replace(path+"/category/list")
+                location.replace(path+"/brand/list")
             }else{
                 layer.alert(res.reason,{icon:2})
             }

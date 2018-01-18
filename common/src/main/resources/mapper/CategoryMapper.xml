@@ -11,7 +11,7 @@
         ifnull(concat(format(count / (SELECT count(pid)
         FROM product) * 100, 0), '%'), '0%') percent,
         ifnull(count, 0) count,
-        category.create_time,
+        date_format(category.create_time,'%Y-%m-%d %H:%i:%s') create_time,
         category.status
         FROM category
         LEFT JOIN (SELECT
@@ -40,6 +40,22 @@
         <if test="name != null">
             AND name LIKE CONCAT('%',#{name},'%')
         </if>
+    </select>
+
+    <insert id="doInsert" parameterType="category">
+        INSERT INTO category (name, create_time, status) VALUES (#{name}, current_timestamp, #{status})
+    </insert>
+
+    <update id="doUpdate" parameterType="category">
+        UPDATE category
+        SET name = #{name}, status = #{status}
+        WHERE cid = #{cid}
+    </update>
+
+    <select id="queryByName" parameterType="string" resultType="category">
+        SELECT *
+        FROM category
+        WHERE name = #{name}
     </select>
 
 </mapper>

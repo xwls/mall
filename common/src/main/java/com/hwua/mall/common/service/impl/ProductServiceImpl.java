@@ -10,6 +10,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import static com.hwua.mall.common.util.CommonUtil.PAGE_SIZE;
+
 @SuppressWarnings("ALL")
 @Service("productService")
 public class ProductServiceImpl implements ProductService {
@@ -17,18 +19,26 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductMapper productMapper;
 
-    private static final int PAGE_SIZE = 4;
-
     @Override
     public Set<Product> specials() {
         return productMapper.querySpecials();
     }
 
     @Override
-    public Map<String,Object> query(Map<String, Object> param,Integer page) {
-        param.put("start",(page - 1) * PAGE_SIZE);
-        param.put("pageSize",PAGE_SIZE);
+    public Map<String,Object> query(Map<String, Object> param) {
         Set<Product> products = productMapper.query(param);
+        if (param.containsKey("admin")){
+            //如果是后台管理进行查询，将商品名换行处理
+            for (Product product : products) {
+                StringBuilder name = new StringBuilder(product.getName());
+                for (int i = 1; i <= name.length(); i++) {
+                    if (i % 46 == 0){
+                        name.insert(i,"<br/>");
+                    }
+                }
+                product.setName(name.toString());
+            }
+        }
         Integer count = productMapper.getCount(param);
         param.put("products",products);
         param.put("count",count);

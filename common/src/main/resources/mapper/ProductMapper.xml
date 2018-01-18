@@ -76,7 +76,12 @@
             AND (product.name LIKE CONCAT('%',#{keyWord},'%')
             OR product.description LIKE CONCAT('%',#{keyWord},'%'))
         </if>
-        ORDER BY sales_volume
+        <if test="orderBy != null">
+            ORDER BY ${orderBy}
+        </if>
+        <if test="orderBy == null">
+            ORDER BY sales_volume
+        </if>
         <if test="start != null &amp;&amp; pageSize != null">
             LIMIT #{start},#{pageSize}
         </if>

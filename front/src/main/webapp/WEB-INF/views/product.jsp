@@ -10,9 +10,9 @@
             $(".product-btn").click(function () {
                 var quantity = $(".quantity").val();
                 if ($(this).text() == "立即购买") {
-                    location = "${ctx}/user/buy?pid=${requestScope.product.pid}&quantity=" + quantity;
+                    location = "${path}/user/buy?pid=${requestScope.product.pid}&quantity=" + quantity;
                 } else {
-                    location = "${ctx}/user/add_cart?pid=${requestScope.product.pid}&quantity=" + quantity;
+                    location = "${path}/user/add_cart?pid=${requestScope.product.pid}&quantity=" + quantity;
                 }
                 return false;
             });
@@ -38,12 +38,12 @@
         <div class="row">
             <div class="col-lg-12">
                 <ul class="breadcrumb">
-                    <li><a href="${ctx}/index">首页</a></li>
+                    <li><a href="${path}/index">首页</a></li>
                     <li>
-                        <a href="${ctx}/list?cid=${requestScope.product.category.cid}&page=1">${requestScope.product.category.name}</a>
+                        <a href="${path}/list?cid=${requestScope.product.category.cid}&page=1">${requestScope.product.category.name}</a>
                     </li>
                     <li>
-                        <a href="${ctx}/list?bid=${requestScope.product.brand.bid}&page=1">${requestScope.product.brand.name}</a>
+                        <a href="${path}/list?bid=${requestScope.product.brand.bid}&page=1">${requestScope.product.brand.name}</a>
                     </li>
                 </ul>
             </div>
@@ -53,7 +53,7 @@
                 <div class="product">
                     <div class="col-md-4">
                         <div class="image">
-                            <img src="${ctx}/${requestScope.product.imgUrl}"/>
+                            <img src="${path}/${requestScope.product.imgUrl}"/>
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -66,10 +66,10 @@
                                 <ul>
                                     <li>ID: ${requestScope.product.pid}</li>
                                     <li>品类: <a
-                                            href="${ctx}/list?cid=${requestScope.product.category.cid}&page=1">${requestScope.product.category.name}</a>
+                                            href="${path}/list?cid=${requestScope.product.category.cid}&page=1">${requestScope.product.category.name}</a>
                                     </li>
                                     <li>品牌: <a
-                                            href="${ctx}/list?bid=${requestScope.product.brand.bid}&page=1">${requestScope.product.brand.name}</a>
+                                            href="${path}/list?bid=${requestScope.product.brand.bid}&page=1">${requestScope.product.brand.name}</a>
                                     </li>
                                 </ul>
                             </div>

@@ -14,13 +14,13 @@
                 <ul class="top-link">
                     <c:choose>
                         <c:when test="${sessionScope.user != null}">
-                            <li><span class="glyphicon glyphicon-user"></span> ${sessionScope.user.uname} <a href="${ctx}/logout">退出</a> </li>
+                            <li><span class="glyphicon glyphicon-user"></span> ${sessionScope.user.uname} <a href="${path}/logout">退出</a> </li>
                         </c:when>
                         <c:otherwise>
-                            <li><a href="${ctx}/account.jsp"><span class="glyphicon glyphicon-user"></span> 我的账号</a></li>
+                            <li><a href="${path}/account.jsp"><span class="glyphicon glyphicon-user"></span> 我的账号</a></li>
                         </c:otherwise>
                     </c:choose>
-                    <li><a href="${ctx}/contact.jsp"><span class="glyphicon glyphicon-envelope"></span> 联系</a></li>
+                    <li><a href="${path}/contact.jsp"><span class="glyphicon glyphicon-envelope"></span> 联系</a></li>
                 </ul>
             </div>
         </div>
@@ -30,7 +30,7 @@
 <header class="container">
     <div class="row">
         <div class="col-md-4">
-            <div id="logo"><a href="${ctx}/index"><img src="${ctx}/static/images/logo.png" /></a></div>
+            <div id="logo"><a href="${path}/index"><img src="${path}/static/images/logo.png" /></a></div>
         </div>
         <div class="col-md-4">
             <form class="form-search" action="list" method="get">
@@ -40,7 +40,7 @@
             </form>
         </div>
         <div class="col-md-4">
-            <div id="cart"><a class="btn btn-1" href="${ctx}/user/cart"><span class="glyphicon glyphicon-shopping-cart"></span>购物车</a></div>
+            <div id="cart"><a class="btn btn-1" href="${path}/user/cart"><span class="glyphicon glyphicon-shopping-cart"></span>购物车</a></div>
         </div>
     </div>
 </header>
@@ -52,14 +52,14 @@
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="${ctx}/index">首页</a></li>
+                <li><a href="${path}/index">首页</a></li>
                 <c:forEach items="${applicationScope.cbs}" var="cb">
-                    <li class="dropdown"><a href="${ctx}/list?cid=${cb.cid}&page=1" >${cb.name}</a>
+                    <li class="dropdown"><a href="${path}/list?cid=${cb.cid}&page=1" >${cb.name}</a>
                         <div class="dropdown-menu">
                             <div class="dropdown-inner">
                                 <ul class="list-unstyled">
                                     <c:forEach items="${cb.brands}" var="brand" varStatus="status">
-                                        <li><a href="${ctx}/list?cid=${cb.cid}&bid=${brand.bid}&page=1">${brand.name}</a></li>
+                                        <li><a href="${path}/list?cid=${cb.cid}&bid=${brand.bid}&page=1">${brand.name}</a></li>
                                         <c:if test="${status.count % 4 == 0}">
                                             </ul>
                                             <ul class="list-unstyled">
@@ -70,7 +70,7 @@
                         </div>
                     </li>
                 </c:forEach>
-                <li><a href="${ctx}/list?page=1">全部商品</a></li>
+                <li><a href="${path}/list?page=1">全部商品</a></li>
             </ul>
         </div>
     </div>

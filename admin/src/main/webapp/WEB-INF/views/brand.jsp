@@ -43,9 +43,9 @@
                                     <div class="input-group-btn">
                                         <button type="submit" class="btn btn-default"><i class="fa fa-search"></i>
                                         </button>
-                                        <button type="submit" class="btn btn-default" style="margin-left: 2px"><i
+                                        <button onclick="add()" class="btn btn-default" style="margin-left: 2px"><i
                                                 class="fa fa-plus"></i></button>
-                                        <button type="submit" class="btn btn-default" style="margin-left: 2px"><i
+                                        <button class="btn btn-default" style="margin-left: 2px"><i
                                                 class="fa fa-refresh"></i></button>
                                     </div>
                                 </div>
@@ -69,7 +69,7 @@
                                         <td>${brand.name}</td>
                                         <td><span class="badge bg-light-blue">${brand.count}</span></td>
                                         <td width="120px">
-                                            <div class="progress progress-xs" data-toggle="tooltip" data-original-title="${brand.percent}">
+                                            <div class="progress progress-sm" data-toggle="tooltip" data-original-title="${brand.percent}">
                                                 <div class="progress-bar progress-bar-danger"
                                                      style="width: ${brand.percent}">
                                                 </div>
@@ -85,7 +85,7 @@
                                             </c:if>
                                         </td>
                                         <td>
-                                            <a class="fa fa-edit" href="" title="编辑">&nbsp;&nbsp;编辑</a>
+                                            <a class="fa fa-edit" href="#brand-form" title="编辑" onclick="edit('${brand.bid}','${brand.name}','${brand.status}')">&nbsp;编辑</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -97,7 +97,7 @@
                             <ul class="pagination pagination-sm no-margin pull-right">
                                 <c:forEach begin="1" end="${requestScope.pageNum}" varStatus="status">
                                     <li <c:if test="${requestScope.page == status.index}">class="active"</c:if>>
-                                        <a href="${ctx}/brand?page=${status.index}">${status.index}</a>
+                                        <a href="${path}/brand/list?page=${status.index}">${status.index}</a>
                                     </li>
                                 </c:forEach>
                             </ul>
@@ -105,27 +105,30 @@
                     </div>
                 </div>
                 <div class="col-md-4">
+                    <a name="brand-form"></a>
                     <div class="box box-success">
                         <div class="box-header with-border">
                             <h3 class="box-title">品牌 - 编辑或添加</h3>
                             <p class="help-block text-sm">点击表格单元行中的“编辑”进行编辑，点击表格左上方“加号”进行添加</p>
                         </div>
-                        <form role="form">
+                        <form role="form" id="brand-form">
                             <div class="box-body">
                                 <div class="form-group">
+                                    <input type="hidden" name="bid"/>
                                     <label for="name">品牌名称</label>
-                                    <input type="text" class="form-control" id="name" placeholder="输入分类的名称" required/>
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="输入分类的名称" required/>
                                 </div>
                                 <div class="form-group">
                                     <label for="status">状态</label>
-                                    <select id="status" name="status" class="form-control">
+                                    <select id="status" name="status" class="form-control" required>
+                                        <option value="" disabled selected>-请选择-</option>
                                         <option value="1">启用</option>
                                         <option value="0">禁用</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">提交</button>
+                                <button type="button" onclick="saveOrUpdate()" class="btn btn-primary">提交</button>
                             </div>
                         </form>
                     </div>
@@ -170,5 +173,6 @@
 </div>
 <!-- ./wrapper -->
 <%@include file="common/script.jsp" %>
+<script type="text/javascript"src="${path}/static/dist/js/pages/brand.js"></script>
 </body>
 </html>

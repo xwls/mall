@@ -4,7 +4,7 @@
         <div class="wrap-footer">
             <div class="row">
                 <div class="col-md-3 col-footer footer-1">
-                    <img src="${ctx}/static/images/logofooter.png" />
+                    <img src="${path}/static/images/logofooter.png" />
                     <p>Lorem Ipsum只是印刷和排版行业的虚拟文本。Lorem Ipsum只是印刷和排版行业的虚拟文本。</p>
                 </div>
                 <div class="col-md-3 col-footer footer-2">
@@ -47,10 +47,10 @@
                 <div class="col-md-6">
                     <div class="pull-right">
                         <ul>
-                            <li><img src="${ctx}/static/images/visa-curved-32px.png" /></li>
-                            <li><img src="${ctx}/static/images/paypal-curved-32px.png" /></li>
-                            <li><img src="${ctx}/static/images/discover-curved-32px.png" /></li>
-                            <li><img src="${ctx}/static/images/maestro-curved-32px.png" /></li>
+                            <li><img src="${path}/static/images/visa-curved-32px.png" /></li>
+                            <li><img src="${path}/static/images/paypal-curved-32px.png" /></li>
+                            <li><img src="${path}/static/images/discover-curved-32px.png" /></li>
+                            <li><img src="${path}/static/images/maestro-curved-32px.png" /></li>
                         </ul>
                     </div>
                 </div>
