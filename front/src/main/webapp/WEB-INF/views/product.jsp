@@ -53,7 +53,7 @@
                 <div class="product">
                     <div class="col-md-4">
                         <div class="image">
-                            <img src="${path}/${requestScope.product.imgUrl}"/>
+                            <img src="${requestScope.product.imgUrl}"/>
                         </div>
                     </div>
                     <div class="col-md-8">

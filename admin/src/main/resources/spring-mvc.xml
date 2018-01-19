@@ -9,6 +9,8 @@
         <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
     </context:component-scan>
 
+    <context:property-placeholder location="classpath:conf.properties"/>
+
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>
@@ -29,8 +31,11 @@
             <bean class="com.hwua.mall.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>-->
-    <!--<mvc:view-controller path="index" view-name="index"/>
-    <mvc:view-controller path="category-brand" view-name="category-brand"/>
-    <mvc:view-controller path="product" view-name="product"/>
-    <mvc:view-controller path="member" view-name="member"/>-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+    <bean id="testController" class="com.hwua.mall.admin.controller.TestController">
+        <property name="accessKey" value="${qiniu.accessKey}"/>
+        <property name="secretKey" value="${qiniu.secretKey}"/>
+        <property name="bucket" value="${qiniu.bucket}"/>
+        <property name="domain" value="${qiniu.domain}"/>
+    </bean>
 </beans>

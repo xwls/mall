@@ -253,25 +253,37 @@
       <Position>10</Position>
       <DataType>int(5)|0</DataType>
     </column>
-    <index id="60" parent="11" name="fk_product_bid">
+    <column id="60" parent="11" name="create_time">
+      <Position>11</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="61" parent="11" name="status">
+      <Position>12</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <index id="62" parent="11" name="fk_product_bid">
       <ColNames>bid</ColNames>
     </index>
-    <index id="61" parent="11" name="fk_product_cid">
+    <index id="63" parent="11" name="fk_product_cid">
       <ColNames>cid</ColNames>
     </index>
-    <key id="62" parent="11" name="PRIMARY">
+    <key id="64" parent="11" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>pid</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="63" parent="11" name="fk_product_cid">
+    <foreign-key id="65" parent="11" name="fk_product_cid">
       <ColNames>cid</ColNames>
       <RefSchemaName>mall</RefSchemaName>
       <RefTableName>category</RefTableName>
       <RefColNames>cid</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="64" parent="11" name="fk_product_bid">
+    <foreign-key id="66" parent="11" name="fk_product_bid">
       <ColNames>bid</ColNames>
       <RefSchemaName>mall</RefSchemaName>
       <RefTableName>brand</RefTableName>

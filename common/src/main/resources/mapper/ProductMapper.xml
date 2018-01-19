@@ -13,6 +13,8 @@
         <result property="description" column="description"/>
         <result property="price" column="price"/>
         <result property="inventory" column="inventory"/>
+        <result property="createTime" column="create_time"/>
+        <result property="status" column="status"/>
         <association property="category" javaType="category">
             <id property="cid" column="cid"/>
             <result property="name" column="cname"/>
@@ -25,26 +27,28 @@
 
     <select id="querySpecials" resultMap="productMap">
         SELECT
-        @rowno := @rowno + 1 AS rowno,
-        r.*
+            @rowno := @rowno + 1 AS rowno,
+            r.*
         FROM (SELECT
-        original_price - price sub_price,
-        pid,
-        category.cid,
-        category.name          cname,
-        brand.bid,
-        brand.name             bname,
-        product.name,
-        description,
-        original_price,
-        price,
-        img_url,
-        inventory,
-        sales_volume
-        FROM product
-        JOIN category ON product.cid = category.cid
-        JOIN brand ON product.bid = brand.bid
-        ORDER BY 1 DESC) r, (SELECT @rowno := 0) t
+                  original_price - price sub_price,
+                  pid,
+                  category.cid,
+                  category.name          cname,
+                  brand.bid,
+                  brand.name             bname,
+                  product.name,
+                  description,
+                  original_price,
+                  price,
+                  img_url,
+                  inventory,
+                  sales_volume,
+                  date_format(product.create_time,'%Y-%m-%d %H:%i:%s') create_time,
+                  product.status
+              FROM product
+                  JOIN category ON product.cid = category.cid
+                  JOIN brand ON product.bid = brand.bid
+              ORDER BY 1 DESC) r, (SELECT @rowno := 0) t
         WHERE @rowno &lt; 4
     </select>
 
@@ -52,16 +56,18 @@
         SELECT
             pid,
             category.cid,
-            category.name          cname,
+            category.name cname,
             brand.bid,
-            brand.name             bname,
+            brand.name bname,
             product.name,
             description,
             original_price,
             price,
             img_url,
             inventory,
-            sales_volume
+            sales_volume,
+            date_format(product.create_time,'%Y-%m-%d %H:%i:%s') create_time,
+            product.status
         FROM product
             JOIN category ON product.cid = category.cid
             JOIN brand ON product.bid = brand.bid
@@ -107,16 +113,18 @@
         SELECT
             pid,
             category.cid,
-            category.name          cname,
+            category.name cname,
             brand.bid,
-            brand.name             bname,
+            brand.name    bname,
             product.name,
             description,
             original_price,
             price,
             img_url,
             inventory,
-            sales_volume
+            sales_volume,
+            date_format(product.create_time,'%Y-%m-%d %H:%i:%s') create_time,
+            product.status
         FROM product
             JOIN category ON product.cid = category.cid
             JOIN brand ON product.bid = brand.bid

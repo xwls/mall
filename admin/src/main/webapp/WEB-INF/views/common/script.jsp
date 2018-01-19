@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!-- jQuery 3 -->
 <script src="${path}/static/bower_components/jquery/dist/jquery.min.js"></script>
+<%--<script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>--%>
 <!-- jQuery UI 1.11.4 -->
 <script src="${path}/static/bower_components/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

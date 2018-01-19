@@ -67,7 +67,7 @@
                         <c:forEach items="${requestScope.specialProducts}" var="product">
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <div class="product">
-                                    <div class="image"><a href="${path}/product?pid=${product.pid}"><img src="${path}/${product.imgUrl}" /></a></div>
+                                    <div class="image"><a href="${path}/product?pid=${product.pid}"><img src="${product.imgUrl}" /></a></div>
                                     <div class="buttons">
                                         <a class="btn cart" href="#"><span class="glyphicon glyphicon-shopping-cart" title="加入购物车"></span></a>
                                         <a class="btn wishlist" href="#"><span class="glyphicon glyphicon-credit-card" title="立即购买"></span></a>

@@ -40,4 +40,10 @@ public class ProductController {
         map.putAll(result);
         return "product";
     }
+
+    @RequestMapping("/form")
+    public String form(Integer pid){
+        System.out.println("pid = [" + pid + "]");
+        return "product-form";
+    }
 }

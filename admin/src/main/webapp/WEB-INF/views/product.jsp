@@ -63,14 +63,16 @@
                               <th>售价</th>
                               <th>库存</th>
                               <th>销量</th>
+                              <th>添加时间</th>
+                              <th>状态</th>
                               <th>操作</th>
                           </tr>
                           <c:forEach items="${requestScope.products}" var="product">
                               <tr>
                                   <td>${product.pid}</td>
-                                  <td>
+                                  <td style="width: 80px">
                                       <div class="pull-left image">
-                                          <img style="width: 60px;height: 60px;padding: 5px" src="/front/${product.imgUrl}" class="img-thumbnail" alt="Product Image">
+                                          <img style="width: 60px;height: 60px;padding: 1px" src="${product.imgUrl}?imageView2/1/w/100/h/100/q/75|imageslim" class="img-thumbnail" alt="Product Image">
                                       </div>
                                   </td>
                                   <td style="text-align: left">${product.name}</td>
@@ -79,6 +81,15 @@
                                   <td>${product.price}</td>
                                   <td>${product.inventory}</td>
                                   <td>${product.salesVolume}</td>
+                                  <td>${product.createTime}</td>
+                                  <td>
+                                      <c:if test="${product.status == 1}">
+                                          <span class="label label-success">启用</span>
+                                      </c:if>
+                                      <c:if test="${product.status == 0}">
+                                          <span class="label label-danger">禁用</span>
+                                      </c:if>
+                                  </td>
                                   <td>
                                       <a class="fa fa-edit" href="#" title="编辑" onclick="edit('${product.pid}')">&nbsp;编辑</a>
                                   </td>
@@ -136,5 +147,6 @@
 <!-- ./wrapper -->
 <%@include file="common/script.jsp"%>
 <script type="text/javascript" src="${path}/static/dist/js/pages/product.js"></script>
+
 </body>
 </html>
