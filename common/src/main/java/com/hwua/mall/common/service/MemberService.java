@@ -1,8 +1,12 @@
 package com.hwua.mall.common.service;
 
+import com.hwua.mall.common.po.Member;
+
+import java.util.Map;
+
 public interface MemberService {
-    /*
-    登录注册的方法修改了
-     */
+
+    public Member login(String name,String pass);
+    public Map<String,Object> register(String name, String pass);
 
 }

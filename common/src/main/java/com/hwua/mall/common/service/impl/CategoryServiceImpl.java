@@ -42,4 +42,9 @@ public class CategoryServiceImpl implements CategoryService {
             return categoryMapper.doUpdate(category);
         }
     }
+
+    @Override
+    public List<Category> queryAll() {
+        return categoryMapper.queryAll();
+    }
 }

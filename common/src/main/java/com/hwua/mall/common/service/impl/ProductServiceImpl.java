@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import static com.hwua.mall.common.util.CommonUtil.ADMIN_PRODUCT_PAGE_SIZE;
 import static com.hwua.mall.common.util.CommonUtil.PAGE_SIZE;
 
 @SuppressWarnings("ALL")
@@ -42,7 +43,7 @@ public class ProductServiceImpl implements ProductService {
         Integer count = productMapper.getCount(param);
         param.put("products",products);
         param.put("count",count);
-        param.put("pageNum",Math.ceil((double) count/PAGE_SIZE));
+        param.put("pageNum",Math.ceil((double) count/ADMIN_PRODUCT_PAGE_SIZE));
         if (param.get("cid") != null){
             Iterator<Product> iterator = products.iterator();
             Product product = iterator.next();
@@ -59,6 +60,12 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product get(Integer pid) {
         return productMapper.queryByPid(pid);
+    }
+
+    @Override
+    public Integer saveOrUpdate(Product product) {
+
+        return null;
     }
 
 }

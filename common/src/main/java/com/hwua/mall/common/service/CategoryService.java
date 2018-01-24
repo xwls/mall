@@ -8,4 +8,5 @@ import java.util.Map;
 public interface CategoryService {
     public Map<String,Object> getCategories(Map<String,Object> param);
     public Integer saveOrUpdate(Category category);
+    public List<Category> queryAll();
 }

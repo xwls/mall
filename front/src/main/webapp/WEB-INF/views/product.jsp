@@ -1,6 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="common.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +10,7 @@
                 if ($(this).text() == "立即购买") {
                     location = "${path}/user/buy?pid=${requestScope.product.pid}&quantity=" + quantity;
                 } else {
-                    location = "${path}/user/add_cart?pid=${requestScope.product.pid}&quantity=" + quantity;
+                    location = "${path}/cart/add?pid=${requestScope.product.pid}&quantity=" + quantity;
                 }
                 return false;
             });

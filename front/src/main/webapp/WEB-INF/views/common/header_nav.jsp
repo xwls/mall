@@ -13,14 +13,14 @@
             <div class="col-xs-6">
                 <ul class="top-link">
                     <c:choose>
-                        <c:when test="${sessionScope.user != null}">
-                            <li><span class="glyphicon glyphicon-user"></span> ${sessionScope.user.uname} <a href="${path}/logout">退出</a> </li>
+                        <c:when test="${sessionScope.member != null}">
+                            <li><span class="glyphicon glyphicon-user"></span> ${sessionScope.member.name} <a href="${path}/account/logout">退出</a> </li>
+                            <li><a href="${path}/profile">个人中心</a> </li>
                         </c:when>
                         <c:otherwise>
-                            <li><a href="${path}/account.jsp"><span class="glyphicon glyphicon-user"></span> 我的账号</a></li>
+                            <li><a href="${path}/account"><span class="glyphicon glyphicon-user"></span> 我的账号</a></li>
                         </c:otherwise>
                     </c:choose>
-                    <li><a href="${path}/contact.jsp"><span class="glyphicon glyphicon-envelope"></span> 联系</a></li>
                 </ul>
             </div>
         </div>
@@ -40,7 +40,7 @@
             </form>
         </div>
         <div class="col-md-4">
-            <div id="cart"><a class="btn btn-1" href="${path}/user/cart"><span class="glyphicon glyphicon-shopping-cart"></span>购物车</a></div>
+            <div id="cart"><a class="btn btn-1" href="${path}/cart/list"><span class="glyphicon glyphicon-shopping-cart"></span>购物车</a></div>
         </div>
     </div>
 </header>

@@ -2,7 +2,9 @@ package com.hwua.mall.common.po;
 
 public class Product {
     private Integer pid;
+    private Integer cid;
     private Category category;
+    private Integer bid;
     private Brand brand;
     private String name;
     private String description;
@@ -14,6 +16,69 @@ public class Product {
     private String createTime;
     private Integer status;
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "pid=" + pid +
+                ", cid=" + cid +
+                ", category=" + category +
+                ", bid=" + bid +
+                ", brand=" + brand +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", originalPrice=" + originalPrice +
+                ", price=" + price +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", inventory=" + inventory +
+                ", salesVolume=" + salesVolume +
+                ", createTime='" + createTime + '\'' +
+                ", status=" + status +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Product product = (Product) o;
+
+        if (pid != null ? !pid.equals(product.pid) : product.pid != null) return false;
+        if (cid != null ? !cid.equals(product.cid) : product.cid != null) return false;
+        if (category != null ? !category.equals(product.category) : product.category != null) return false;
+        if (bid != null ? !bid.equals(product.bid) : product.bid != null) return false;
+        if (brand != null ? !brand.equals(product.brand) : product.brand != null) return false;
+        if (name != null ? !name.equals(product.name) : product.name != null) return false;
+        if (description != null ? !description.equals(product.description) : product.description != null) return false;
+        if (originalPrice != null ? !originalPrice.equals(product.originalPrice) : product.originalPrice != null)
+            return false;
+        if (price != null ? !price.equals(product.price) : product.price != null) return false;
+        if (imgUrl != null ? !imgUrl.equals(product.imgUrl) : product.imgUrl != null) return false;
+        if (inventory != null ? !inventory.equals(product.inventory) : product.inventory != null) return false;
+        if (salesVolume != null ? !salesVolume.equals(product.salesVolume) : product.salesVolume != null) return false;
+        if (createTime != null ? !createTime.equals(product.createTime) : product.createTime != null) return false;
+        return status != null ? status.equals(product.status) : product.status == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = pid != null ? pid.hashCode() : 0;
+        result = 31 * result + (cid != null ? cid.hashCode() : 0);
+        result = 31 * result + (category != null ? category.hashCode() : 0);
+        result = 31 * result + (bid != null ? bid.hashCode() : 0);
+        result = 31 * result + (brand != null ? brand.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (originalPrice != null ? originalPrice.hashCode() : 0);
+        result = 31 * result + (price != null ? price.hashCode() : 0);
+        result = 31 * result + (imgUrl != null ? imgUrl.hashCode() : 0);
+        result = 31 * result + (inventory != null ? inventory.hashCode() : 0);
+        result = 31 * result + (salesVolume != null ? salesVolume.hashCode() : 0);
+        result = 31 * result + (createTime != null ? createTime.hashCode() : 0);
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        return result;
+    }
+
     public Integer getPid() {
         return pid;
     }
@@ -22,12 +87,28 @@ public class Product {
         this.pid = pid;
     }
 
+    public Integer getCid() {
+        return cid;
+    }
+
+    public void setCid(Integer cid) {
+        this.cid = cid;
+    }
+
     public Category getCategory() {
         return category;
     }
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Integer getBid() {
+        return bid;
+    }
+
+    public void setBid(Integer bid) {
+        this.bid = bid;
     }
 
     public Brand getBrand() {
@@ -108,62 +189,5 @@ public class Product {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "pid=" + pid +
-                ", category=" + category +
-                ", brand=" + brand +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", originalPrice=" + originalPrice +
-                ", price=" + price +
-                ", imgUrl='" + imgUrl + '\'' +
-                ", inventory=" + inventory +
-                ", salesVolume=" + salesVolume +
-                ", createTime=" + createTime +
-                ", status=" + status +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Product product = (Product) o;
-
-        if (pid != null ? !pid.equals(product.pid) : product.pid != null) return false;
-        if (category != null ? !category.equals(product.category) : product.category != null) return false;
-        if (brand != null ? !brand.equals(product.brand) : product.brand != null) return false;
-        if (name != null ? !name.equals(product.name) : product.name != null) return false;
-        if (description != null ? !description.equals(product.description) : product.description != null) return false;
-        if (originalPrice != null ? !originalPrice.equals(product.originalPrice) : product.originalPrice != null)
-            return false;
-        if (price != null ? !price.equals(product.price) : product.price != null) return false;
-        if (imgUrl != null ? !imgUrl.equals(product.imgUrl) : product.imgUrl != null) return false;
-        if (inventory != null ? !inventory.equals(product.inventory) : product.inventory != null) return false;
-        if (salesVolume != null ? !salesVolume.equals(product.salesVolume) : product.salesVolume != null) return false;
-        if (createTime != null ? !createTime.equals(product.createTime) : product.createTime != null) return false;
-        return status != null ? status.equals(product.status) : product.status == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = pid != null ? pid.hashCode() : 0;
-        result = 31 * result + (category != null ? category.hashCode() : 0);
-        result = 31 * result + (brand != null ? brand.hashCode() : 0);
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (originalPrice != null ? originalPrice.hashCode() : 0);
-        result = 31 * result + (price != null ? price.hashCode() : 0);
-        result = 31 * result + (imgUrl != null ? imgUrl.hashCode() : 0);
-        result = 31 * result + (inventory != null ? inventory.hashCode() : 0);
-        result = 31 * result + (salesVolume != null ? salesVolume.hashCode() : 0);
-        result = 31 * result + (createTime != null ? createTime.hashCode() : 0);
-        result = 31 * result + (status != null ? status.hashCode() : 0);
-        return result;
     }
 }

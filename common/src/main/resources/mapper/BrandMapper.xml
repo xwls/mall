@@ -58,4 +58,12 @@
         WHERE name = #{name}
     </select>
 
+    <select id="queryAll" resultType="brand">
+        SELECT
+            bid,
+            name,
+            status
+        FROM brand
+    </select>
+
 </mapper>

@@ -1,10 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ include file="common.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<title>会员账号 - Mobile Shop</title>
     <%@ include file="common/head.jsp"%>
 	<script type="text/javascript">
 		$(function () {
@@ -25,7 +24,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<ul class="breadcrumb">
-						<li><a href="index.jsp">首页</a></li>
+						<li><a href="${path}/index">首页</a></li>
 						<li><a href="account.jsp">账号</a></li>
 					</ul>
 				</div>
@@ -33,9 +32,9 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="heading"><h2>登录</h2></div>
-					<form name="form1" id="form-login" method="post" action="${path}/login">
-						<c:if test='${param.callback != null}'>
-                            <input type="hidden" name="callback" value="${param.callback}<c:if test='${param.quantity != null}'>&quantity=${param.quantity}</c:if>">
+					<form name="form1" id="form-login" method="post" action="${path}/account/login">
+						<c:if test='${param.callBack != null}'>
+                            <input type="hidden" name="callBack" value="${param.callBack}<c:if test='${param.quantity != null}'>&quantity=${param.quantity}</c:if>">
                         </c:if>
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="用户名 :" name="uname" required>

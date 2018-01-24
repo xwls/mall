@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="common.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +19,7 @@
                 <div class="col-md-6">
                     <div class="col-md-4">
                         <div class="image">
-                            <img src="${path}/${requestScope.product.img_url}">
+                            <img src="${requestScope.product.imgUrl}">
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -29,7 +28,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 btn-cart">
-                    <a href="${path}/user/cart" class="btn btn-2">去购物车结算</a>
+                    <a href="${path}/cart/list" class="btn btn-2">去购物车结算</a>
                     <a href="${path}/product?pid=${requestScope.product.pid}" class="btn btn-2">返回查看商品</a>
                 </div>
             </div>

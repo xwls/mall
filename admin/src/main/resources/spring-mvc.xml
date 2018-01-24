@@ -32,10 +32,5 @@
         </mvc:interceptor>
     </mvc:interceptors>-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
-    <bean id="testController" class="com.hwua.mall.admin.controller.TestController">
-        <property name="accessKey" value="${qiniu.accessKey}"/>
-        <property name="secretKey" value="${qiniu.secretKey}"/>
-        <property name="bucket" value="${qiniu.bucket}"/>
-        <property name="domain" value="${qiniu.domain}"/>
-    </bean>
+
 </beans>

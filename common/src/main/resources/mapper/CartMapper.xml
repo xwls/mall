@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwua.mall.common.dao.CartMapper">
+
+    <insert id="doInsert" parameterType="cart">
+        INSERT INTO cart (mid, pid, quantity) VALUES (#{mid}, #{pid}, #{quantity})
+    </insert>
+
+    <select id="queryByMidAndPid" resultType="cart">
+        SELECT *
+        FROM cart
+        WHERE mid = #{mid} AND pid = #{pid}
+    </select>
+
+    <update id="updateQuantity">
+        UPDATE cart
+        SET quantity = quantity + #{quantity}
+        WHERE id = #{id}
+    </update>
+
+    <select id="queryByMid" parameterType="int" resultType="productInCart">
+        SELECT
+            id,
+            cart.pid,
+            product.cid,
+            category.name cname,
+            product.bid,
+            brand.name    bname,
+            product.name,
+            price,
+            img_url       imgUrl,
+            quantity
+        FROM cart, product, brand, category
+        WHERE cart.pid = product.pid
+              AND product.bid = brand.bid
+              AND product.cid = category.cid
+              AND mid = #{mid}
+    </select>
+
+    <select id="queryTotal" parameterType="int" resultType="cartTotal">
+        SELECT
+            count(cart.pid)       totalcount,
+            sum(price * quantity) totalprice
+        FROM cart, product
+        WHERE cart.pid = product.pid
+              AND mid = #{mid}
+    </select>
+
+    <update id="minus">
+        UPDATE cart
+        SET quantity = quantity - 1
+        WHERE mid = #{mid} AND id = #{id}
+    </update>
+    <update id="plus">
+        UPDATE cart
+        SET quantity = quantity + 1
+        WHERE mid = #{mid} AND id = #{id}
+    </update>
+    <delete id="doDelete">
+        DELETE FROM cart
+        WHERE mid = #{mid} AND id = #{id}
+    </delete>
+</mapper>

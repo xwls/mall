@@ -42,4 +42,9 @@ public class BrandServiceImpl implements BrandService {
             return brandMapper.doUpdate(brand);
         }
     }
+
+    @Override
+    public List<Brand> queryAll() {
+        return brandMapper.queryAll();
+    }
 }

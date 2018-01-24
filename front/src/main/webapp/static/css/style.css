@@ -15,7 +15,7 @@ html, body {width:100%; padding:0; margin:0;}
 /* ---------------------------------------------------------------------------- */
 html { -webkit-text-size-adjust: none;}
 .video embed,.video object,.video iframe { width: 100%;  height: auto;}
-img{max-width:100%;	height: auto;width: auto\9; /* ie8 */}
+img{max-width:100%;	height: auto;width: auto; /* ie8 */}
 
 h1 {font-size: 38px;}
 h2 {font-size: 36px;}
@@ -156,10 +156,10 @@ header .form-search button:hover {color: #eee;}
 	-webkit-box-orient: vertical;
 	overflow: hidden;*/
 }
-.product .name h3{font-weight: 500;font-size: 20px;color: #666;margin-top: 10px;}
+.product .name h3{font-weight: 500;font-size: 20px;color: #666;margin-top: 2px;}
 .product .name h4{font-weight: 500;font-size: 14px;color: #666;margin-top: 10px;}
 .product .info ul li{margin: 10px 0;}
-.product .price {font-size: 22px;margin: 10px 0;}
+.product .price {font-size: 22px;margin: 2px 0;}
 .product .price span{color: #aaa;margin-left: 10px;text-decoration: line-through;} 
 .product .rating{margin: 10px 0;}
 .product .rating span {margin-right: 5px;}

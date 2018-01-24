@@ -12,4 +12,5 @@ public interface BrandMapper {
     public Integer doInsert(Brand brand);
     public Integer doUpdate(Brand brand);
     public Brand queryByName(String name);
+    List<Brand> queryAll();
 }

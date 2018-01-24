@@ -21,13 +21,18 @@
     <mvc:resources mapping="/static/**" location="static/"/>
 
     <!--配置拦截器-->
-    <!--<mvc:interceptors>
+    <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
             <mvc:exclude-mapping path="/static/**"/>
-            <mvc:exclude-mapping path="/user/login"/>
-            <bean class="com.hwua.mall.interceptor.LoginInterceptor"/>
+            <mvc:exclude-mapping path="/index"/>
+            <mvc:exclude-mapping path="/account"/>
+            <mvc:exclude-mapping path="/account/login"/>
+            <mvc:exclude-mapping path="/account/register"/>
+            <mvc:exclude-mapping path="/product/**"/>
+            <mvc:exclude-mapping path="/list/**"/>
+            <bean class="com.hwua.mall.front.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
-    </mvc:interceptors>-->
+    </mvc:interceptors>
 
 </beans>

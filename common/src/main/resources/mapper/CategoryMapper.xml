@@ -58,4 +58,12 @@
         WHERE name = #{name}
     </select>
 
+    <select id="queryAll" resultType="category">
+        SELECT
+            cid,
+            name,
+            status
+        FROM category
+    </select>
+
 </mapper>

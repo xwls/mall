@@ -11,4 +11,5 @@ public interface CategoryMapper {
     public Integer doInsert(Category category);
     public Integer doUpdate(Category category);
     public Category queryByName(String name);
+    public List<Category> queryAll();
 }

@@ -131,4 +131,9 @@
         WHERE pid = #{pid}
     </select>
 
+    <insert id="doInsert" parameterType="product">
+        INSERT INTO product (cid, bid, name, description, original_price, price, img_url, inventory, create_time, status)
+        VALUES (#{cid}, #{bid}, #{name}, #{description}, #{originalPrice}, #{price}, #{imgUrl}, #{inventory}, current_timestamp, #{status})
+    </insert>
+
 </mapper>

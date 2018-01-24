@@ -35,4 +35,11 @@
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
+    <bean id="config" class="com.hwua.mall.admin.util.Config">
+        <property name="accessKey" value="${qiniu.accessKey}"/>
+        <property name="secretKey" value="${qiniu.secretKey}"/>
+        <property name="bucket" value="${qiniu.bucket}"/>
+        <property name="domain" value="${qiniu.domain}"/>
+    </bean>
+
 </beans>

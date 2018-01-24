@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwua.mall.common.dao.MemberMapper">
+
+    <select id="queryOne" resultType="member" parameterType="member">
+        SELECT *
+        FROM member
+        WHERE 1 = 1
+        <if test="name != null">
+            AND name = #{name}
+        </if>
+        <if test="pass != null">
+            AND pass = #{pass}
+        </if>
+    </select>
+
+    <select id="query" resultType="member" parameterType="member">
+        SELECT *
+        FROM member
+        WHERE 1 = 1
+        <if test="name != null">
+            AND name = #{name}
+        </if>
+        <if test="pass != null">
+            AND pass = #{pass}
+        </if>
+    </select>
+
+    <insert id="doInsert" parameterType="member">
+        INSERT INTO member (name, pass, email, tel, gender) VALUES (#{name}, #{pass}, #{email}, #{tel}, #{gender})
+    </insert>
+
+</mapper>
